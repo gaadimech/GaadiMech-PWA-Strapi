@@ -14,8 +14,8 @@
   "attributes": {
     "registrationNumber": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": false,
+      "unique": false
     },
     "make": {
       "type": "string",
@@ -33,7 +33,7 @@
     },
     "fuelType": {
       "type": "enumeration",
-      "enum": ["petrol", "diesel", "cng", "electric", "hybrid"],
+      "enum": ["Petrol", "Diesel", "CNG", "Electric", "Hybrid"],
       "required": true
     },
     "isPrimary": {

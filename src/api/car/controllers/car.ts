@@ -9,6 +9,11 @@ export default factories.createCoreController('api::car.car', ({ strapi }) => ({
   async create(ctx) {
     const { data } = ctx.request.body;
     
+    // Generate a temporary registration number if not provided
+    if (!data.registrationNumber) {
+      data.registrationNumber = `TEMP_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    }
+    
     // Ensure only one primary car per user
     if (data.isPrimary && data.owner) {
       const existingCars = await strapi.entityService.findMany('api::car.car', {

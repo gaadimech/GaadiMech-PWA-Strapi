@@ -557,7 +557,7 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     engineCapacity: Schema.Attribute.String;
     fuelType: Schema.Attribute.Enumeration<
-      ['petrol', 'diesel', 'cng', 'electric', 'hybrid']
+      ['Petrol', 'Diesel', 'CNG', 'Electric', 'Hybrid']
     > &
       Schema.Attribute.Required;
     isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
@@ -572,9 +572,7 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
       'plugin::users-permissions.user'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    registrationNumber: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    registrationNumber: Schema.Attribute.String;
     transmission: Schema.Attribute.Enumeration<['manual', 'automatic', 'cvt']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
