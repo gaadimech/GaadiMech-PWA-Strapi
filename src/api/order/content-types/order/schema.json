@@ -1,0 +1,141 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": "Customer orders and bookings"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "customerPhone": {
+      "type": "string",
+      "required": true
+    },
+    "customerEmail": {
+      "type": "email"
+    },
+    "services": {
+      "type": "json",
+      "required": true
+    },
+    "car": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car.car"
+    },
+    "carDetails": {
+      "type": "json"
+    },
+    "serviceAddress": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::address.address"
+    },
+    "addressDetails": {
+      "type": "json"
+    },
+    "serviceDate": {
+      "type": "date",
+      "required": true
+    },
+    "timeSlot": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "in_progress", "completed", "cancelled"],
+      "default": "pending"
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "paid", "failed", "refunded", "partial"],
+      "default": "pending"
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["online", "cash", "card", "upi"]
+    },
+    "paymentId": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "discountAmount": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0
+    },
+    "finalAmount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "couponCode": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "customerNotes": {
+      "type": "text"
+    },
+    "assignedTechnician": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "estimatedDuration": {
+      "type": "integer"
+    },
+    "actualStartTime": {
+      "type": "datetime"
+    },
+    "actualEndTime": {
+      "type": "datetime"
+    },
+    "rating": {
+      "type": "float",
+      "min": 0,
+      "max": 5
+    },
+    "feedback": {
+      "type": "text"
+    },
+    "cancellationReason": {
+      "type": "text"
+    },
+    "refundAmount": {
+      "type": "decimal",
+      "min": 0
+    },
+    "orderType": {
+      "type": "enumeration",
+      "enum": ["express", "regular", "doorstep", "workshop"],
+      "default": "regular"
+    }
+  }
+} 

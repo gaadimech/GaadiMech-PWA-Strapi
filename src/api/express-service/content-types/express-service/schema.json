@@ -1,0 +1,84 @@
+{
+  "kind": "collectionType",
+  "collectionName": "express_services",
+  "info": {
+    "singularName": "express-service",
+    "pluralName": "express-services",
+    "displayName": "Express Service",
+    "description": "Express service bookings with vehicle and location details"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mobileNumber": {
+      "type": "string",
+      "required": true,
+      "maxLength": 15,
+      "minLength": 10
+    },
+    "serviceType": {
+      "type": "string",
+      "required": true
+    },
+    "submissionTimestamp": {
+      "type": "datetime"
+    },
+    "serviceDate": {
+      "type": "date"
+    },
+    "timeSlot": {
+      "type": "string"
+    },
+    "carBrand": {
+      "type": "string"
+    },
+    "carModel": {
+      "type": "string"
+    },
+    "fuel_type": {
+      "type": "enumeration",
+      "enum": ["petrol", "diesel", "cng", "electric", "hybrid"]
+    },
+    "servicePrice": {
+      "type": "integer",
+      "min": 0
+    },
+    "couponCode": {
+      "type": "string"
+    },
+    "finalPrice": {
+      "type": "decimal",
+      "min": 0
+    },
+    "userCity": {
+      "type": "string"
+    },
+    "userState": {
+      "type": "string"
+    },
+    "userCountry": {
+      "type": "string",
+      "default": "India"
+    },
+    "userLatitude": {
+      "type": "string"
+    },
+    "userLongitude": {
+      "type": "string"
+    },
+    "locationSource": {
+      "type": "enumeration",
+      "enum": ["geolocation", "ip", "manual", "unknown"]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "confirmed", "in_progress", "completed", "cancelled"],
+      "default": "pending"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+} 

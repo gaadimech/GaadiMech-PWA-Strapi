@@ -1,0 +1,178 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_activities",
+  "info": {
+    "singularName": "user-activity",
+    "pluralName": "user-activities",
+    "displayName": "User Activity",
+    "description": "Comprehensive user journey and activity tracking for business intelligence"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "sessionId": {
+      "type": "string",
+      "required": true
+    },
+    "activityType": {
+      "type": "enumeration",
+      "enum": [
+        "page_visit",
+        "service_browse",
+        "cart_action",
+        "search",
+        "filter_apply",
+        "price_check",
+        "booking_attempt",
+        "payment_attempt",
+        "order_placed",
+        "review_given",
+        "profile_update",
+        "app_open",
+        "app_close",
+        "feature_used",
+        "error_encountered"
+      ],
+      "required": true
+    },
+    "action": {
+      "type": "string",
+      "required": true
+    },
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "string"
+    },
+    "previousPage": {
+      "type": "string"
+    },
+    "nextPage": {
+      "type": "string"
+    },
+    "serviceId": {
+      "type": "string"
+    },
+    "serviceType": {
+      "type": "string"
+    },
+    "searchQuery": {
+      "type": "string"
+    },
+    "searchResults": {
+      "type": "integer"
+    },
+    "filtersApplied": {
+      "type": "json"
+    },
+    "cartValue": {
+      "type": "decimal"
+    },
+    "cartItems": {
+      "type": "integer"
+    },
+    "conversionValue": {
+      "type": "decimal"
+    },
+    "device": {
+      "type": "json"
+    },
+    "location": {
+      "type": "json"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["website", "android_app", "ios_app"],
+      "default": "website"
+    },
+    "medium": {
+      "type": "string"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": "string"
+    },
+    "userAgent": {
+      "type": "text"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "isConverted": {
+      "type": "boolean",
+      "default": false
+    },
+    "conversionType": {
+      "type": "string"
+    },
+    "funnelPosition": {
+      "type": "string"
+    },
+    "exitPoint": {
+      "type": "string"
+    },
+    "engagementScore": {
+      "type": "integer",
+      "default": 0
+    },
+    "bounceRate": {
+      "type": "float"
+    },
+    "timeOnPage": {
+      "type": "integer"
+    },
+    "scrollDepth": {
+      "type": "float"
+    },
+    "clickCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "errorCode": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "text"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "cohort": {
+      "type": "string"
+    },
+    "experimentId": {
+      "type": "string"
+    },
+    "variationId": {
+      "type": "string"
+    },
+    "customerLifecycleStage": {
+      "type": "enumeration",
+      "enum": ["visitor", "lead", "customer", "repeat_customer", "loyal_customer", "churned"],
+      "default": "visitor"
+    },
+    "businessValue": {
+      "type": "decimal",
+      "default": 0
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "critical"],
+      "default": "low"
+    }
+  }
+} 

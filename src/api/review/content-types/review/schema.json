@@ -1,0 +1,89 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reviews",
+  "info": {
+    "singularName": "review",
+    "pluralName": "reviews",
+    "displayName": "Review",
+    "description": "Customer reviews and feedback"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "customerInitial": {
+      "type": "string",
+      "maxLength": 3
+    },
+    "rating": {
+      "type": "float",
+      "required": true,
+      "min": 1,
+      "max": 5
+    },
+    "comment": {
+      "type": "text",
+      "required": true
+    },
+    "service": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "isVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "isApproved": {
+      "type": "boolean",
+      "default": false
+    },
+    "isPublic": {
+      "type": "boolean",
+      "default": true
+    },
+    "helpfulCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "responseFromCompany": {
+      "type": "text"
+    },
+    "serviceType": {
+      "type": "enumeration",
+      "enum": ["express", "periodic", "denting", "ac", "battery", "windshield", "detailing", "tyre", "carspa", "doorstep"]
+    },
+    "images": {
+      "type": "json"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["website", "app", "google", "facebook", "manual"],
+      "default": "website"
+    }
+  }
+} 

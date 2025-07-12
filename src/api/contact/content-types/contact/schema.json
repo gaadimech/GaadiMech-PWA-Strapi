@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact",
+    "description": "Contact form submissions"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "maxLength": 15,
+      "minLength": 10
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "userCity": {
+      "type": "string"
+    },
+    "userState": {
+      "type": "string"
+    },
+    "userCountry": {
+      "type": "string",
+      "default": "India"
+    },
+    "userLatitude": {
+      "type": "float"
+    },
+    "userLongitude": {
+      "type": "float"
+    },
+    "locationSource": {
+      "type": "enumeration",
+      "enum": ["geolocation", "ip", "manual", "unknown"]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "read", "replied", "closed"],
+      "default": "new"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["general", "support", "complaint", "suggestion", "partnership"]
+    },
+    "responseNotes": {
+      "type": "text"
+    }
+  }
+} 

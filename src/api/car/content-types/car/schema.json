@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Car",
+    "description": "User vehicles"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "registrationNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "make": {
+      "type": "string",
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "year": {
+      "type": "integer",
+      "required": true,
+      "min": 1950,
+      "max": 2030
+    },
+    "fuelType": {
+      "type": "enumeration",
+      "enum": ["petrol", "diesel", "cng", "electric", "hybrid"],
+      "required": true
+    },
+    "isPrimary": {
+      "type": "boolean",
+      "default": false
+    },
+    "color": {
+      "type": "string"
+    },
+    "engineCapacity": {
+      "type": "string"
+    },
+    "transmission": {
+      "type": "enumeration",
+      "enum": ["manual", "automatic", "cvt"]
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "cars"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+} 

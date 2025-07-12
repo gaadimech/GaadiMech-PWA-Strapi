@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_types",
+  "info": {
+    "singularName": "service-type",
+    "pluralName": "service-types",
+    "displayName": "Service Type",
+    "description": "Different types of services offered"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "description": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+} 

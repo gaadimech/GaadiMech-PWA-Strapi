@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "doorstep_services",
+  "info": {
+    "singularName": "doorstep-service",
+    "pluralName": "doorstep-services",
+    "displayName": "Doorstep Service",
+    "description": "Services offered at customer's doorstep"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "originalPrice": {
+      "type": "decimal",
+      "min": 0
+    },
+    "duration": {
+      "type": "string",
+      "required": true
+    },
+    "rating": {
+      "type": "float",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "isEmergency": {
+      "type": "boolean",
+      "default": false
+    },
+    "image": {
+      "type": "string"
+    },
+    "features": {
+      "type": "json"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-category.service-category",
+      "inversedBy": "services"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "availability": {
+      "type": "string",
+      "default": "8 AM - 8 PM"
+    },
+    "serviceCode": {
+      "type": "string",
+      "unique": true
+    },
+    "minimumBookingTime": {
+      "type": "integer",
+      "default": 60
+    },
+    "maxBookingsPerDay": {
+      "type": "integer",
+      "default": 10
+    },
+    "tags": {
+      "type": "json"
+    },
+    "prerequisites": {
+      "type": "text"
+    },
+    "cancellationPolicy": {
+      "type": "text"
+    }
+  }
+} 

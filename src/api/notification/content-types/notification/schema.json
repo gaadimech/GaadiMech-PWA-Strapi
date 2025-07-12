@@ -1,0 +1,158 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification",
+    "description": "User notifications and communication management"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "notifications"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "push",
+        "sms",
+        "email",
+        "in_app",
+        "whatsapp"
+      ],
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "order_update",
+        "payment",
+        "promotion",
+        "reminder",
+        "alert",
+        "welcome",
+        "feedback",
+        "system",
+        "marketing",
+        "cart_abandonment"
+      ],
+      "required": true
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "sent", "delivered", "read", "failed", "cancelled"],
+      "default": "pending"
+    },
+    "isRead": {
+      "type": "boolean",
+      "default": false
+    },
+    "readAt": {
+      "type": "datetime"
+    },
+    "sentAt": {
+      "type": "datetime"
+    },
+    "deliveredAt": {
+      "type": "datetime"
+    },
+    "scheduledFor": {
+      "type": "datetime"
+    },
+    "expiresAt": {
+      "type": "datetime"
+    },
+    "relatedEntity": {
+      "type": "string"
+    },
+    "relatedEntityId": {
+      "type": "string"
+    },
+    "actionUrl": {
+      "type": "string"
+    },
+    "actionText": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "iconUrl": {
+      "type": "string"
+    },
+    "data": {
+      "type": "json"
+    },
+    "channel": {
+      "type": "enumeration",
+      "enum": ["fcm", "apns", "sms_gateway", "email_service", "whatsapp_api"],
+      "default": "fcm"
+    },
+    "deviceTokens": {
+      "type": "json"
+    },
+    "template": {
+      "type": "string"
+    },
+    "templateData": {
+      "type": "json"
+    },
+    "campaignId": {
+      "type": "string"
+    },
+    "segmentId": {
+      "type": "string"
+    },
+    "isPersonalized": {
+      "type": "boolean",
+      "default": false
+    },
+    "deliveryAttempts": {
+      "type": "integer",
+      "default": 0
+    },
+    "lastAttemptAt": {
+      "type": "datetime"
+    },
+    "errorMessage": {
+      "type": "text"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "trackingId": {
+      "type": "string",
+      "unique": true
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["system", "campaign", "trigger", "manual"],
+      "default": "system"
+    },
+    "language": {
+      "type": "enumeration",
+      "enum": ["en", "hi", "mr", "gu", "ta", "te", "kn", "ml"],
+      "default": "en"
+    }
+  }
+} 

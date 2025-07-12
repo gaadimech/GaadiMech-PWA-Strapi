@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payment_methods",
+  "info": {
+    "singularName": "payment-method",
+    "pluralName": "payment-methods",
+    "displayName": "Payment Method",
+    "description": "User saved payment methods and preferences"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "paymentMethods"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["credit_card", "debit_card", "upi", "net_banking", "wallet", "cod"],
+      "required": true
+    },
+    "provider": {
+      "type": "enumeration",
+      "enum": ["razorpay", "payu", "phonepe", "gpay", "paytm", "amazon_pay", "stripe"],
+      "required": true
+    },
+    "displayName": {
+      "type": "string",
+      "required": true
+    },
+    "maskedNumber": {
+      "type": "string"
+    },
+    "lastFourDigits": {
+      "type": "string",
+      "maxLength": 4
+    },
+    "expiryMonth": {
+      "type": "integer",
+      "min": 1,
+      "max": 12
+    },
+    "expiryYear": {
+      "type": "integer"
+    },
+    "cardType": {
+      "type": "enumeration",
+      "enum": ["visa", "mastercard", "amex", "rupay", "maestro"]
+    },
+    "bankName": {
+      "type": "string"
+    },
+    "upiId": {
+      "type": "string"
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false
+    },
+    "isVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "tokenId": {
+      "type": "string",
+      "private": true,
+      "searchable": false
+    },
+    "gateway": {
+      "type": "string"
+    },
+    "gatewayCustomerId": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "addedAt": {
+      "type": "datetime"
+    },
+    "lastUsedAt": {
+      "type": "datetime"
+    },
+    "usageCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "failureCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "nickName": {
+      "type": "string"
+    },
+    "billingAddress": {
+      "type": "json"
+    }
+  }
+} 

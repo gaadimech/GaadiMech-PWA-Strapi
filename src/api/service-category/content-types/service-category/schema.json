@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_categories",
+  "info": {
+    "singularName": "service-category",
+    "pluralName": "service-categories",
+    "displayName": "Service Category",
+    "description": "Categories for doorstep services"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "icon": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "availability": {
+      "type": "string",
+      "default": "8 AM - 8 PM"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayOrder": {
+      "type": "integer",
+      "default": 0
+    },
+    "color": {
+      "type": "string"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::doorstep-service.doorstep-service",
+      "mappedBy": "category"
+    },
+    "categoryCode": {
+      "type": "string",
+      "unique": true
+    },
+    "isEmergencyCategory": {
+      "type": "boolean",
+      "default": false
+    },
+    "minimumResponseTime": {
+      "type": "integer",
+      "default": 60
+    },
+    "serviceArea": {
+      "type": "json"
+    }
+  }
+} 

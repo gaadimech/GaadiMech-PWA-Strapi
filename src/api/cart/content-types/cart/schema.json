@@ -1,0 +1,144 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carts",
+  "info": {
+    "singularName": "cart",
+    "pluralName": "carts",
+    "displayName": "Cart",
+    "description": "Persistent user cart storage for seamless shopping experience"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "carts"
+    },
+    "sessionId": {
+      "type": "string",
+      "required": true
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "cartType": {
+      "type": "enumeration",
+      "enum": ["regular_services", "doorstep_services", "mixed"],
+      "default": "regular_services"
+    },
+    "items": {
+      "type": "json",
+      "required": true
+    },
+    "totalItems": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "totalQuantity": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "subtotal": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0
+    },
+    "taxAmount": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0
+    },
+    "discountAmount": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0
+    },
+    "appliedCoupon": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::coupon.coupon"
+    },
+    "couponCode": {
+      "type": "string"
+    },
+    "couponDiscount": {
+      "type": "decimal",
+      "default": 0,
+      "min": 0
+    },
+    "selectedCar": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::car.car"
+    },
+    "selectedAddress": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::address.address"
+    },
+    "selectedDate": {
+      "type": "date"
+    },
+    "selectedTimeSlot": {
+      "type": "string"
+    },
+    "specialInstructions": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "abandoned", "converted", "saved_for_later", "expired"],
+      "default": "active"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "lastModifiedAt": {
+      "type": "datetime"
+    },
+    "expiresAt": {
+      "type": "datetime"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["website", "android_app", "ios_app"],
+      "default": "website"
+    },
+    "userAgent": {
+      "type": "text"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "location": {
+      "type": "json"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "abandonmentReason": {
+      "type": "string"
+    },
+    "remindersSent": {
+      "type": "integer",
+      "default": 0
+    },
+    "convertedToOrder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order"
+    }
+  }
+} 

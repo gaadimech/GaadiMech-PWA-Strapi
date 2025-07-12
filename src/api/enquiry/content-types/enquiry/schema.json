@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "enquiries",
+  "info": {
+    "singularName": "enquiry",
+    "pluralName": "enquiries",
+    "displayName": "Enquiry",
+    "description": "General service enquiries and requests"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "mobileNumber": {
+      "type": "string",
+      "required": true,
+      "maxLength": 15,
+      "minLength": 10
+    },
+    "carModel": {
+      "type": "string",
+      "required": true
+    },
+    "preferredDate": {
+      "type": "date",
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "serviceType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-type.service-type"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["new", "reviewed", "contacted", "resolved", "closed"],
+      "default": "new"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    "assignedTo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "responseNotes": {
+      "type": "text"
+    },
+    "followUpRequired": {
+      "type": "boolean",
+      "default": false
+    },
+    "followUpDate": {
+      "type": "datetime"
+    }
+  }
+} 

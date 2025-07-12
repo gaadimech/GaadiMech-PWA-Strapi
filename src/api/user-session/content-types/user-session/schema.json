@@ -1,0 +1,141 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_sessions",
+  "info": {
+    "singularName": "user-session",
+    "pluralName": "user-sessions",
+    "displayName": "User Session",
+    "description": "User authentication sessions and OTP management"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "mobileNumber": {
+      "type": "string",
+      "required": true,
+      "maxLength": 15,
+      "minLength": 10
+    },
+    "sessionId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "deviceFingerprint": {
+      "type": "string"
+    },
+    "otpCode": {
+      "type": "string",
+      "private": true,
+      "searchable": false
+    },
+    "otpAttempts": {
+      "type": "integer",
+      "default": 0
+    },
+    "otpExpiresAt": {
+      "type": "datetime"
+    },
+    "otpVerifiedAt": {
+      "type": "datetime"
+    },
+    "isOtpVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "loginMethod": {
+      "type": "enumeration",
+      "enum": ["mobile_otp", "social_google", "social_facebook", "email_password"],
+      "default": "mobile_otp"
+    },
+    "sessionStatus": {
+      "type": "enumeration",
+      "enum": ["pending_otp", "active", "expired", "logged_out", "blocked"],
+      "default": "pending_otp"
+    },
+    "loginAt": {
+      "type": "datetime"
+    },
+    "logoutAt": {
+      "type": "datetime"
+    },
+    "expiresAt": {
+      "type": "datetime"
+    },
+    "lastActivityAt": {
+      "type": "datetime"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "userAgent": {
+      "type": "text"
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": ["web", "android", "ios", "unknown"],
+      "default": "web"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "deviceInfo": {
+      "type": "json"
+    },
+    "location": {
+      "type": "json"
+    },
+    "isNewUser": {
+      "type": "boolean",
+      "default": false
+    },
+    "failedLoginAttempts": {
+      "type": "integer",
+      "default": 0
+    },
+    "isBlocked": {
+      "type": "boolean",
+      "default": false
+    },
+    "blockedUntil": {
+      "type": "datetime"
+    },
+    "suspiciousActivity": {
+      "type": "boolean",
+      "default": false
+    },
+    "riskScore": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    "refreshToken": {
+      "type": "string",
+      "private": true,
+      "searchable": false
+    },
+    "refreshTokenExpiresAt": {
+      "type": "datetime"
+    },
+    "fcmToken": {
+      "type": "string"
+    },
+    "sessionData": {
+      "type": "json"
+    },
+    "securityFlags": {
+      "type": "json"
+    }
+  }
+} 

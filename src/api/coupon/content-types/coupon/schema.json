@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupons",
+  "info": {
+    "singularName": "coupon",
+    "pluralName": "coupons",
+    "displayName": "Coupon",
+    "description": "Discount coupons and promotional codes"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "prefix": {
+      "type": "string"
+    },
+    "suffix": {
+      "type": "string"
+    },
+    "discountType": {
+      "type": "enumeration",
+      "enum": ["percentage", "fixed", "free_shipping"],
+      "required": true
+    },
+    "discountValue": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "maxUses": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "currentUses": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "createdFor": {
+      "type": "string"
+    },
+    "validFrom": {
+      "type": "datetime",
+      "required": true
+    },
+    "validUntil": {
+      "type": "datetime",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "isPersonalized": {
+      "type": "boolean",
+      "default": false
+    },
+    "minPurchaseAmount": {
+      "type": "decimal",
+      "min": 0
+    },
+    "maxDiscountAmount": {
+      "type": "decimal",
+      "min": 0
+    },
+    "description": {
+      "type": "text"
+    },
+    "termsAndConditions": {
+      "type": "text"
+    },
+    "applicableServices": {
+      "type": "json"
+    }
+  }
+} 

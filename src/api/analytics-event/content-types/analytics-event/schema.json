@@ -1,0 +1,192 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analytics_events",
+  "info": {
+    "singularName": "analytics-event",
+    "pluralName": "analytics-events",
+    "displayName": "Analytics Event",
+    "description": "User behavior and interaction tracking for business intelligence"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "eventName": {
+      "type": "string",
+      "required": true
+    },
+    "eventType": {
+      "type": "enumeration",
+      "enum": [
+        "page_view",
+        "button_click",
+        "form_submit",
+        "cart_action",
+        "search",
+        "service_view",
+        "booking_flow",
+        "payment_flow",
+        "user_action",
+        "app_lifecycle",
+        "error",
+        "conversion"
+      ],
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "sessionId": {
+      "type": "string",
+      "required": true
+    },
+    "deviceId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "anonymousId": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "properties": {
+      "type": "json"
+    },
+    "context": {
+      "type": "json"
+    },
+    "page": {
+      "type": "json"
+    },
+    "referrer": {
+      "type": "string"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": ["website", "android_app", "ios_app"],
+      "default": "website"
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": ["web", "android", "ios", "unknown"],
+      "default": "web"
+    },
+    "channel": {
+      "type": "enumeration",
+      "enum": ["organic", "paid_search", "social", "email", "direct", "referral", "affiliate"],
+      "default": "direct"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "medium": {
+      "type": "string"
+    },
+    "utmSource": {
+      "type": "string"
+    },
+    "utmMedium": {
+      "type": "string"
+    },
+    "utmCampaign": {
+      "type": "string"
+    },
+    "utmTerm": {
+      "type": "string"
+    },
+    "utmContent": {
+      "type": "string"
+    },
+    "location": {
+      "type": "json"
+    },
+    "device": {
+      "type": "json"
+    },
+    "browser": {
+      "type": "json"
+    },
+    "os": {
+      "type": "json"
+    },
+    "screen": {
+      "type": "json"
+    },
+    "userAgent": {
+      "type": "text"
+    },
+    "ipAddress": {
+      "type": "string"
+    },
+    "value": {
+      "type": "decimal"
+    },
+    "revenue": {
+      "type": "decimal"
+    },
+    "currency": {
+      "type": "string",
+      "default": "INR"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "experimentId": {
+      "type": "string"
+    },
+    "variationId": {
+      "type": "string"
+    },
+    "cohort": {
+      "type": "string"
+    },
+    "isConversion": {
+      "type": "boolean",
+      "default": false
+    },
+    "conversionValue": {
+      "type": "decimal"
+    },
+    "funnelStep": {
+      "type": "string"
+    },
+    "errorCode": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "text"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "loadTime": {
+      "type": "integer"
+    },
+    "isProcessed": {
+      "type": "boolean",
+      "default": false
+    },
+    "processedAt": {
+      "type": "datetime"
+    },
+    "metadata": {
+      "type": "json"
+    }
+  }
+} 

@@ -1,0 +1,245 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_users",
+  "info": {
+    "name": "user",
+    "description": "Enhanced user profile for comprehensive data capture",
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": false
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true,
+      "searchable": false
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users",
+      "configurable": false
+    },
+    "mobileNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 15,
+      "minLength": 10
+    },
+    "firstName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 50
+    },
+    "lastName": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": ["male", "female", "other", "prefer_not_to_say"]
+    },
+    "profilePicture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "isEmailVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "isMobileVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "lastLoginAt": {
+      "type": "datetime"
+    },
+    "lastActiveAt": {
+      "type": "datetime"
+    },
+    "registrationSource": {
+      "type": "enumeration",
+      "enum": ["website", "android_app", "ios_app", "referral", "social"],
+      "default": "website"
+    },
+    "referralCode": {
+      "type": "string",
+      "unique": true
+    },
+    "referredBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "totalReferrals": {
+      "type": "integer",
+      "default": 0
+    },
+    "loyaltyPoints": {
+      "type": "integer",
+      "default": 0
+    },
+    "totalSpent": {
+      "type": "decimal",
+      "default": 0
+    },
+    "totalOrders": {
+      "type": "integer",
+      "default": 0
+    },
+    "averageOrderValue": {
+      "type": "decimal",
+      "default": 0
+    },
+    "preferredLanguage": {
+      "type": "enumeration",
+      "enum": ["en", "hi", "mr", "gu", "ta", "te", "kn", "ml"],
+      "default": "en"
+    },
+    "preferredCurrency": {
+      "type": "enumeration",
+      "enum": ["INR", "USD"],
+      "default": "INR"
+    },
+    "timeZone": {
+      "type": "string",
+      "default": "Asia/Kolkata"
+    },
+    "deviceInfo": {
+      "type": "json"
+    },
+    "preferences": {
+      "type": "json"
+    },
+    "marketingConsent": {
+      "type": "boolean",
+      "default": false
+    },
+    "smsConsent": {
+      "type": "boolean",
+      "default": true
+    },
+    "emailConsent": {
+      "type": "boolean",
+      "default": false
+    },
+    "pushNotificationConsent": {
+      "type": "boolean",
+      "default": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "accountType": {
+      "type": "enumeration",
+      "enum": ["individual", "business", "fleet"],
+      "default": "individual"
+    },
+    "customerSegment": {
+      "type": "enumeration",
+      "enum": ["new", "regular", "premium", "vip", "inactive"],
+      "default": "new"
+    },
+    "riskScore": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 100
+    },
+    "cars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::car.car",
+      "mappedBy": "owner"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "user"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "user"
+    },
+    "carts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cart.cart",
+      "mappedBy": "user"
+    },
+    "paymentMethods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment-method.payment-method",
+      "mappedBy": "user"
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "user"
+    }
+  }
+} 
